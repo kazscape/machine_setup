@@ -53,6 +53,14 @@ dir .\*.ttf | %{ $fonts.CopyHere($_.fullname) }
 # ファイルの削除
 Remove-Item .\*.ttf
 
+# settings.json作成のためにWindows Terminalの起動
+Start-Process -FilePath "wt.exe"
+
+# Windows Terminalの終了
+Start-Sleep -Seconds 2
+$pro = Get-Process WindowsTerminal
+if ( $pro -ne $null ) {
+    Stop-Process -Name WindowsTerminal
 
 # ログファイルの出力停止
 Stop-Transcript
