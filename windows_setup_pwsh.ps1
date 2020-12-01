@@ -22,5 +22,8 @@ scoop bucket add extras
 # Visual Studio Codeのインストール
 scoop install vscode
 
+# Google Chromeのインストール
+scoop install googlechrome
+
 # ログファイルの出力停止
 Stop-Transcript
