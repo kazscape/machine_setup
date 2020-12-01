@@ -1,20 +1,23 @@
-# ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®å‡ºåŠ›é–‹å§‹
+# ƒƒOƒtƒ@ƒCƒ‹‚Ìo—ÍŠJn
 Start-Transcript "./windows_setup_pwsh_log.txt"
 
-# å®Ÿè¡Œå‰ã®ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ãƒãƒªã‚·ãƒ¼ã®å–å¾—
+# Àsƒ|ƒŠƒV[‚Ìæ“¾
 Get-ExecutionPolicy -List
 
-# å®Ÿè¡Œãƒãƒªã‚·ãƒ¼ã‚’å¤‰æ›´ã™ã‚‹
+# Àsƒ|ƒŠƒV[‚Ì•ÏX
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser -Force
 
-# å®Ÿè¡Œå‰ã®ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ãƒãƒªã‚·ãƒ¼ã®å–å¾—
+# Àsƒ|ƒŠƒV[‚Ìæ“¾
 Get-ExecutionPolicy -List
 
-# scoopã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+# scoop‚ÌƒCƒ“ƒXƒg[ƒ‹
 iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 
-# gitã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+# git‚ÌƒCƒ“ƒXƒg[ƒ‹
 scoop install git
 
-# ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®å‡ºåŠ›åœæ­¢
+# extras bucket‚ğ’Ç‰Á
+scoop bucket add extras
+
+# ƒƒOƒtƒ@ƒCƒ‹‚Ìo—Í’â~
 Stop-Transcript
