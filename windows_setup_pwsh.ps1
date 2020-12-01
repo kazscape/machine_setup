@@ -61,6 +61,50 @@ Start-Sleep -Seconds 2
 $pro = Get-Process WindowsTerminal
 if ( $pro -ne $null ) {
     Stop-Process -Name WindowsTerminal
+}
+
+# Windows Terminalのsettings.jsonの取得
+$userprofile = $env:USERPROFILE
+$data = Get-Content -Encoding Ascii "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json"
+
+# Icebergカラースキーマの追加
+$data = $data -replace "`"schemes`": \[\],", `
+    "`"schemes`": [ `
+    `t{ `
+    `t`t`"name`": `"Iceberg`", `
+    `t`t`"foreground`": `"#c6c8d1`", `
+    `t`t`"background`": `"#161821`", `
+    `t`t`"black`": `"#161821`", `
+    `t`t`"red`": `"#e27878`", `
+    `t`t`"green`": `"#b4be82`", `
+    `t`t`"yellow`": `"#e2a478`", `
+    `t`t`"blue`": `"#84a0c6`", `
+    `t`t`"purple`": `"#a093c7`", `
+    `t`t`"cyan`": `"#89b8c2`", `
+    `t`t`"white`": `"#c6c8d1`", `
+    `t`t`"brightBlack`": `"#6b7089`", `
+    `t`t`"brightRed`": `"#e98989`", `
+    `t`t`"brightGreen`": `"#c0ca8e`", `
+    `t`t`"brightYellow`": `"#e9b189`", `
+    `t`t`"brightBlue`": `"#91acd1`", `
+    `t`t`"brightPurple`": `"#ada0d3`", `
+    `t`t`"brightCyan`": `"#95c4ce`", `
+    `t`t`"brightWhite`": `"#d2d4de`" `
+    `t}
+    ],"
+
+# Powershell Coreの設定の追加
+$data = $data -replace "`"source`": `"Windows.Terminal.PowershellCore`"", `
+    "`"source`": `"Windows.Terminal.PowershellCore`", `
+    `t`t`t`"cursorShape`": `"filledBox`", `
+    `t`t`t`"colorScheme`": `"Iceberg`", `
+    `t`t`t`"fontFace`": `"MesloLGS NF`", `
+    `t`t`t`"fontSize`": 10, `
+    `t`t`t`"useAcrylic`": true, `
+    `t`t`t`"acrylicOpacity`": 0.8" 
+
+# settings.jsonの上書き
+$data | Out-File "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json" -Encoding default
 
 # ログファイルの出力停止
 Stop-Transcript
