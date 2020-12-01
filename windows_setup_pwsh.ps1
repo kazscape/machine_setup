@@ -21,6 +21,7 @@ scoop bucket add extras
 
 # Visual Studio Codeのインストール
 scoop install vscode
+reg import C:\Users\yamauchi.kazuharu\scoop\apps\vscode\current\vscode-install-context.reg
 
 # Google Chromeのインストール
 scoop install googlechrome
