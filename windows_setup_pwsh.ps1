@@ -25,5 +25,17 @@ scoop install vscode
 # Google Chromeのインストール
 scoop install googlechrome
 
+# Slackのインストール
+scoop install slack
+
+# Powershell coreのインストール
+scoop install pwsh
+
+# Windows Terminalのインストール
+scoop install windows-terminal
+
+# キャッシュのクリア
+scoop cache rm *
+
 # ログファイルの出力停止
 Stop-Transcript
