@@ -13,5 +13,8 @@ Get-ExecutionPolicy -List
 # scoopのインストール
 iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 
+# gitのインストール
+scoop install git
+
 # ログファイルの出力停止
 Stop-Transcript
