@@ -1,3 +1,6 @@
+# ユーザフォルダパスの取得
+$userprofile = $env:USERPROFILE
+
 # ログファイルの出力開始
 Start-Transcript "./windows_setup_pwsh_log.txt"
 
@@ -21,7 +24,7 @@ scoop bucket add extras
 
 # Visual Studio Codeのインストール
 scoop install vscode
-reg import C:\Users\yamauchi.kazuharu\scoop\apps\vscode\current\vscode-install-context.reg
+Start-Process -FilePath "reg" -ArgumentList "import ${userprofile}\scoop\apps\vscode\current\vscode-install-context.reg"
 
 # Google Chromeのインストール
 scoop install googlechrome
@@ -65,7 +68,6 @@ if ( $pro -ne $null ) {
 }
 
 # Windows Terminalのsettings.jsonの取得
-$userprofile = $env:USERPROFILE
 $data = Get-Content -Encoding Ascii "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json"
 
 # Icebergカラースキーマの追加
