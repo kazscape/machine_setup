@@ -1,4 +1,4 @@
-﻿# ユーザフォルダパスの取得
+# ユーザフォルダパスの取得
 $userprofile = $env:USERPROFILE
 
 # PSGalleryの信頼する

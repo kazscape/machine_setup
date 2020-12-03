@@ -1,49 +1,49 @@
-# ƒ†[ƒUƒtƒHƒ‹ƒ_ƒpƒX‚Ìæ“¾
+# ãƒ¦ãƒ¼ã‚¶ãƒ•ã‚©ãƒ«ãƒ€ãƒ‘ã‚¹ã®å–å¾—
 $userprofile = $env:USERPROFILE
 
-# ƒvƒƒtƒ@ƒCƒ‹uMicrosoft.PowerShell_profile.ps1v‚Ìíœ
+# ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã€ŒMicrosoft.PowerShell_profile.ps1ã€ã®å‰Šé™¤
 Remove-Item -Force -Recurse  ${userprofile}\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 
-# oh-my-poshƒ‚ƒWƒ…[ƒ‹‚ÌƒCƒ“ƒXƒg[ƒ‹
+# oh-my-poshãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 Remove-Item -Force -Recurse  ${userprofile}\Documents\PowerShell\Modules/oh-my-posh
 
-# posh-gitƒ‚ƒWƒ…[ƒ‹‚Ìíœ
+# posh-gitãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‰Šé™¤
 Remove-Item -Force -Recurse  ${userprofile}\Documents\PowerShell\Modules/posh-git
 
-# Windows Terminal‚Ìsettings.json‚Ìíœ
+# Windows Terminalã®settings.jsonã®å‰Šé™¤
 if(Test-Path "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json") {
     Remove-Item "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json" -Force
 }
 
-# Winmerge‚ÌƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+# Winmergeã®ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop uninstall winmerge
 
-# Windows Terminal‚ÌƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+# Windows Terminalã®ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop uninstall windows-terminal
 
-# Powershell Core‚ÌƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+# Powershell Coreã®ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop uninstall pwsh
 
-# Slack‚ÌƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+# Slackã®ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop uninstall slack
 
-# Google Chrome‚ÌƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+# Google Chromeã®ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop uninstall googlechrome
 
-# Visual Studio Code‚ÌƒRƒ“ƒeƒLƒXƒgƒƒjƒ…[‚©‚ç‚Ìíœ
+# Visual Studio Codeã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‹ã‚‰ã®å‰Šé™¤
 Start-Process -FilePath "reg" -ArgumentList "import ${userprofile}\scoop\apps\vscode\current\vscode-uninstall-context.reg"
 
-# Visual Studio Code‚ÌƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+# Visual Studio Codeã®ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop uninstall vscode
 
-# 7zip‚ÌƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+# 7zipã®ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop uninstall 7zip
 
-# extras bucket‚ğƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+# extras bucketã‚’ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop bucket rm extras
 
-# git‚ÌƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+# gitã®ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop uninstall git
 
-# scoop‚ÌƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+# scoopã®ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop uninstall scoop

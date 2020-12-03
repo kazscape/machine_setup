@@ -1,76 +1,76 @@
-# ƒ†[ƒUƒtƒHƒ‹ƒ_ƒpƒX‚Ìæ“¾
+# ãƒ¦ãƒ¼ã‚¶ãƒ•ã‚©ãƒ«ãƒ€ãƒ‘ã‚¹ã®å–å¾—
 $userprofile = $env:USERPROFILE
 
-# ƒƒOƒtƒ@ƒCƒ‹‚Ìo—ÍŠJn
+# ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®å‡ºåŠ›é–‹å§‹
 Start-Transcript "./windows_setup_pwsh_log.txt"
 
-# Àsƒ|ƒŠƒV[‚Ìæ“¾
+# å®Ÿè¡Œãƒãƒªã‚·ãƒ¼ã®å–å¾—
 Get-ExecutionPolicy -List
 
-# Àsƒ|ƒŠƒV[‚Ì•ÏX
+# å®Ÿè¡Œãƒãƒªã‚·ãƒ¼ã®å¤‰æ›´
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser -Force
 
-# Àsƒ|ƒŠƒV[‚Ìæ“¾
+# å®Ÿè¡Œãƒãƒªã‚·ãƒ¼ã®å–å¾—
 Get-ExecutionPolicy -List
 
-# scoop‚ÌƒCƒ“ƒXƒg[ƒ‹
+# scoopã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 
-# git‚ÌƒCƒ“ƒXƒg[ƒ‹
+# gitã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop install git
 
-# extras bucket‚ğ’Ç‰Á
+# extras bucketã‚’è¿½åŠ 
 scoop bucket add extras
 
-# Visual Studio Code‚ÌƒCƒ“ƒXƒg[ƒ‹
+# Visual Studio Codeã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop install vscode
 Start-Process -FilePath "reg" -ArgumentList "import ${userprofile}\scoop\apps\vscode\current\vscode-install-context.reg"
 
-# Google Chrome‚ÌƒCƒ“ƒXƒg[ƒ‹
+# Google Chromeã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop install googlechrome
 
-# Slack‚ÌƒCƒ“ƒXƒg[ƒ‹
+# Slackã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop install slack
 
-# Powershell core‚ÌƒCƒ“ƒXƒg[ƒ‹
+# Powershell coreã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop install pwsh
 
-# Windows Terminal‚ÌƒCƒ“ƒXƒg[ƒ‹
+# Windows Terminalã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop install windows-terminal
 
-# Winmerge‚ÌƒCƒ“ƒXƒg[ƒ‹
+# Winmergeã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 scoop install winmerge
 
-# ƒLƒƒƒbƒVƒ…‚ÌƒNƒŠƒA
+# ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚¯ãƒªã‚¢
 scoop cache rm *
 
-# MesloLGS NFƒtƒHƒ“ƒg‚Ìƒ_ƒEƒ“ƒ[ƒh
+# MesloLGS NFãƒ•ã‚©ãƒ³ãƒˆã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
 Invoke-WebRequest -Uri "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"  -Outfile ".\MesloLGS NF Regular.ttf"
 Invoke-WebRequest -Uri "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"  -Outfile ".\MesloLGS NF Bold.ttf"
 Invoke-WebRequest -Uri "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"  -Outfile ".\MesloLGS NF Italic.ttf"
 Invoke-WebRequest -Uri "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"  -Outfile ".\MesloLGS NF Bold Italic.ttf"
 
-# ƒtƒHƒ“ƒg‚ÌƒCƒ“ƒXƒg[ƒ‹
+# ãƒ•ã‚©ãƒ³ãƒˆã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)
 dir .\*.ttf | %{ $fonts.CopyHere($_.fullname) }
 
-# ƒtƒ@ƒCƒ‹‚Ìíœ
+# ãƒ•ã‚¡ã‚¤ãƒ«ã®å‰Šé™¤
 Remove-Item .\*.ttf
 
-# settings.jsonì¬‚Ì‚½‚ß‚ÉWindows Terminal‚Ì‹N“®
+# settings.jsonä½œæˆã®ãŸã‚ã«Windows Terminalã®èµ·å‹•
 Start-Process -FilePath "wt.exe"
 
-# Windows Terminal‚ÌI—¹
+# Windows Terminalã®çµ‚äº†
 Start-Sleep -Seconds 2
 $pro = Get-Process WindowsTerminal
 if ( $pro -ne $null ) {
     Stop-Process -Name WindowsTerminal
 }
 
-# Windows Terminal‚Ìsettings.json‚Ìæ“¾
+# Windows Terminalã®settings.jsonã®å–å¾—
 $data = Get-Content -Encoding Ascii "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json"
 
-# IcebergƒJƒ‰[ƒXƒL[ƒ}‚Ì’Ç‰Á
+# Icebergã‚«ãƒ©ãƒ¼ã‚¹ã‚­ãƒ¼ãƒã®è¿½åŠ 
 $data = $data -replace "`"schemes`": \[\],", `
     "`"schemes`": [ `
     `t{ `
@@ -96,7 +96,7 @@ $data = $data -replace "`"schemes`": \[\],", `
     `t}
     ],"
 
-# Powershell Core‚Ìİ’è‚Ì’Ç‰Á
+# Powershell Coreã®è¨­å®šã®è¿½åŠ 
 $data = $data -replace "`"source`": `"Windows.Terminal.PowershellCore`"", `
     "`"source`": `"Windows.Terminal.PowershellCore`", `
     `t`t`t`"cursorShape`": `"filledBox`", `
@@ -106,11 +106,11 @@ $data = $data -replace "`"source`": `"Windows.Terminal.PowershellCore`"", `
     `t`t`t`"useAcrylic`": true, `
     `t`t`t`"acrylicOpacity`": 0.8" 
 
-# settings.json‚Ìã‘‚«
+# settings.jsonã®ä¸Šæ›¸ã
 $data | Out-File "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json" -Encoding default
 
-# oh-my-posh‚ÌƒCƒ“ƒXƒg[ƒ‹
+# oh-my-poshã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 pwsh .\setup_oh-my-posh.ps1
 
-# ƒƒOƒtƒ@ƒCƒ‹‚Ìo—Í’â~
+# ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®å‡ºåŠ›åœæ­¢
 Stop-Transcript
