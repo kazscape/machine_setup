@@ -1,0 +1,1 @@
+powershell -File windows_setup_pwsh_uninstall.ps1
