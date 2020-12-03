@@ -109,5 +109,8 @@ $data = $data -replace "`"source`": `"Windows.Terminal.PowershellCore`"", `
 # settings.jsonの上書き
 $data | Out-File "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json" -Encoding default
 
+# oh-my-poshのインストール
+pwsh .\setup_oh-my-posh.ps1
+
 # ログファイルの出力停止
 Stop-Transcript
