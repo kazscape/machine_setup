@@ -1,6 +1,9 @@
 # ユーザフォルダパスの取得
 $userprofile = $env:USERPROFILE
 
+# ディストリビューションのアンインストール
+Get-AppxPackage *ubuntu* | Remove-AppxPackage
+
 # プロファイル「Microsoft.PowerShell_profile.ps1」の削除
 Remove-Item -Force -Recurse  ${userprofile}\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 
