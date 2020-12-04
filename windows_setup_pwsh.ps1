@@ -73,6 +73,9 @@ if ( $null -ne $pro ) {
 # Windows Terminalのsettings.jsonの取得
 $data = Get-Content -Encoding Ascii "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json"
 
+# "CopyOnSelect"をtrueに変更
+$data = $data -replace "`"copyOnSelect`": false,", "`"copyOnSelect`": true,"
+
 # Icebergカラースキーマの追加
 $data = $data -replace "`"schemes`": \[\],", `
     "`"schemes`": [ `
@@ -131,7 +134,23 @@ Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu.appx -UseBas
 Add-AppxPackage -Path .\Ubuntu.appx
 
 # appxファイルの削除
-Remove-Item .\Ubuntu.appx
+# Remove-Item .\Ubuntu.appx
+
+# Windows Terminalのsettings.jsonの取得
+$data = Get-Content -Encoding Ascii "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json"
+
+# Powershell Coreの設定の追加
+$data = $data -replace "`"source`": `"Windows.Terminal.Wsl`"", `
+    "`"source`": `"Windows.Terminal.Wsl`", `
+    `t`t`t`"cursorShape`": `"filledBox`", `
+    `t`t`t`"colorScheme`": `"Iceberg`", `
+    `t`t`t`"fontFace`": `"MesloLGS NF`", `
+    `t`t`t`"fontSize`": 10, `
+    `t`t`t`"useAcrylic`": true, `
+    `t`t`t`"acrylicOpacity`": 0.8" 
+
+# settings.jsonの上書き
+$data | Out-File "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json" -Encoding default
 
 # ログファイルの出力停止
 Stop-Transcript
