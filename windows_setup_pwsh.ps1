@@ -14,7 +14,7 @@ Set-ExecutionPolicy RemoteSigned -scope CurrentUser -Force
 Get-ExecutionPolicy -List
 
 # scoopのインストール
-iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+Invoke-Expression (new-object net.webclient).downloadstring('https://get.scoop.sh')
 
 # gitのインストール
 scoop install git
@@ -52,7 +52,7 @@ Invoke-WebRequest -Uri "https://github.com/romkatv/powerlevel10k-media/raw/maste
 
 # フォントのインストール
 $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)
-dir .\*.ttf | %{ $fonts.CopyHere($_.fullname) }
+Get-ChildItem .\*.ttf | ForEach-Object{ $fonts.CopyHere($_.fullname) }
 
 # ファイルの削除
 Remove-Item .\*.ttf
@@ -63,8 +63,8 @@ Start-Process -FilePath "wt.exe"
 # Windows Terminalの終了
 Start-Sleep -Seconds 2
 $pro = Get-Process WindowsTerminal
-if ( $pro -ne $null ) {
-    Stop-Process -Name WindowsTerminal
+if ( $null -ne $pro ) {
+        Stop-Process -Name WindowsTerminal
 }
 
 # Windows Terminalのsettings.jsonの取得
