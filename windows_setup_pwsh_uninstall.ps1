@@ -15,6 +15,9 @@ if(Test-Path "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.jso
     Remove-Item "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json" -Force
 }
 
+# zoomのアンインストール
+scoop uninstall zoom
+
 # Winmergeのアンインストール
 scoop uninstall winmerge
 
