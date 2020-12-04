@@ -41,6 +41,9 @@ scoop install windows-terminal
 # Winmergeのインストール
 scoop install winmerge
 
+# zoomのインストール
+scoop install zoom
+
 # キャッシュのクリア
 scoop cache rm *
 
