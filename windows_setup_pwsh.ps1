@@ -115,5 +115,23 @@ $data | Out-File "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings
 # oh-my-poshのインストール
 pwsh .\setup_oh-my-posh.ps1
 
+# Linux用Windowsサブシステムのオプション機能を有効にする
+Start-Process -FilePath dism -ArgumentList "/online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /nonrestart" -Verb runAs
+
+# 仮想マシンプラットフォームのオプション機能を有効にする
+Start-Process -FilePath dism -ArgumentList "/online /enable-feature /featurename:VirtualMachinePlatform /all /norestart" -Verb runAs
+
+# WSL2を既定のバージョンとして設定する
+wsl --set-default-version 2
+
+# ディストリビューションのダウンロード
+Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu.appx -UseBasicParsing
+
+# ディストリビューションのインストール
+Add-AppxPackage -Path .\Ubuntu.appx
+
+# appxファイルの削除
+Remove-Item .\Ubuntu.appx
+
 # ログファイルの出力停止
 Stop-Transcript
