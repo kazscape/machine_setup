@@ -1,1 +1,1 @@
-powershell -File uninstall_windows_setup.ps1
+powershell -File uninstall_windows.ps1
