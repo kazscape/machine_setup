@@ -26,5 +26,13 @@ if [ $OS == 'Linux' ]; then
   echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 fi
 
-# シェルの再起動
-exec $SHELL -l
+# fishのインストール
+brew install fish
+fish --version
+
+# デフォルトシェルをfishに設定
+echo $(which fish) | sudo tee -a /etc/shells
+chsh -s $(which fish)
+
+# fishシェルの起動
+fish
