@@ -134,7 +134,7 @@ Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu.appx -UseBas
 Add-AppxPackage -Path .\Ubuntu.appx
 
 # appxファイルの削除
-# Remove-Item .\Ubuntu.appx
+Remove-Item .\Ubuntu.appx
 
 # Windows Terminalのsettings.jsonの取得
 $data = Get-Content -Encoding Ascii "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json"
