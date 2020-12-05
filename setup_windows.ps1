@@ -136,6 +136,19 @@ Add-AppxPackage -Path .\Ubuntu.appx
 # appxファイルの削除
 Remove-Item .\Ubuntu.appx
 
+# ディストリビューションの初回起動を待つ
+Read-Host "`r`n*** Please login you distribution first, Then press enter... ***"
+
+# settings.json作成のためにWindows Terminalの起動
+Start-Process -FilePath "wt.exe"
+
+# Windows Terminalの終了
+Start-Sleep -Seconds 2
+$pro = Get-Process WindowsTerminal
+if ( $null -ne $pro ) {
+        Stop-Process -Name WindowsTerminal
+}
+
 # Windows Terminalのsettings.jsonの取得
 $data = Get-Content -Encoding Ascii "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json"
 
