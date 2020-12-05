@@ -10,6 +10,13 @@ else
   exit 1
 fi
 
+# fishのアンインストール
+brew uninstall fish
+
+# デフォルトシェルをbashに設定
+chsh -s /bin/bash
+sudo sed -i -e '/fish/d' /etc/shells
+
 # LinuxでHomebrew用に設定したプロファイルと環境変数の設定を削除
 if [ $OS == 'Linux' ]; then
   test -r ~/.bash_profile && sed -i -e '/brew shellenv/d' ~/.bash_profile
@@ -25,6 +32,3 @@ fi
 if [ $OS == 'Linux' ]; then
     sudo apt-get remove build-essential curl file git
 fi
-
-# シェルの再起動
-exec $SHELL -l
