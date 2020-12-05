@@ -1,3 +1,6 @@
+# ログファイルの出力開始
+Start-Transcript "./windows_setup_pwsh_log.txt"
+
 # ユーザフォルダパスの取得
 $userprofile = $env:USERPROFILE
 
@@ -53,3 +56,6 @@ scoop uninstall git
 
 # scoopのアンインストール
 scoop uninstall scoop
+
+# ログファイルの出力停止
+Stop-Transcript
