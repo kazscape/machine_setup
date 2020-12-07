@@ -22,22 +22,18 @@ Set up windows as follows
 
 Also, Can uninstall above settings
 
-## Demo
-
-## VS. 
-
-## Requirement
-
 ## Usage
-
-## Install
-
-## Contribution
-
+```bash
+git clone https://github.com/kazscape/windows_setting.git
+cd windows_setting
+setting.bat
+# or
+uninstall.bat
+```
 ## Licence
 
 [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
 ## Author
 
-[tcnksm](https://github.com/tcnksm)
+[kazscape](https://github.com/kazscape)
