@@ -1,1 +1,1 @@
-powershell -File setup_windows.ps1
+powershell -File .ps1
