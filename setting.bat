@@ -1,1 +1,1 @@
-powershell -File .ps1
+powershell -File setting.ps1
