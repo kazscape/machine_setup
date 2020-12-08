@@ -25,6 +25,10 @@ scoop bucket add extras
 # Visual Studio Codeのインストール
 scoop install vscode
 Start-Process -FilePath "reg" -ArgumentList "import ${userprofile}\scoop\apps\vscode\current\vscode-install-context.reg"
+## Workaround for "vscode remote doesn't work for wsl #2581" (https://github.com/lukesampson/scoop-extras/issues/2581)
+$data = "#!/bin/sh`n$userprofile/scoop/apps/vscode/current/bin/code `"$@`""
+$data = $data -replace "c:\\Users\\", "/mnt/c/Users/"
+$data | Out-File "$userprofile\scoop\shims\code" -Encoding ascii -NoNewline
 
 # Google Chromeのインストール
 scoop install googlechrome
