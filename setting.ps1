@@ -120,7 +120,7 @@ $data = $data -replace "`"source`": `"Windows.Terminal.PowershellCore`"", `
 $data | Out-File "$userprofile\AppData\Local\Microsoft\Windows Terminal\settings.json" -Encoding default
 
 # oh-my-poshのインストール
-pwsh .\setup_oh-my-posh.ps1
+pwsh .\oh-my-posh_setting.ps1
 
 # Linux用Windowsサブシステムのオプション機能を有効にする
 Start-Process -FilePath dism -ArgumentList "/online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /nonrestart" -Verb runAs
@@ -140,10 +140,10 @@ if (!(Test-Path .\Ubuntu.appx)) {
 Add-AppxPackage -Path .\Ubuntu.appx
 
 # appxファイルの削除
-Remove-Item .\Ubuntu.appx
+Remove-Item .\Ubuntu.appx -confirm
 
 # ディストリビューションの初回起動を待つ
-Read-Host "`r`n*** Please login you distribution first, Then press enter... ***"
+Read-Host "`r`n*** Please login you distribution first, Then press enter... ***`r`n"
 
 # settings.json作成のためにWindows Terminalの起動
 Start-Process -FilePath "wt.exe"
